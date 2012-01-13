@@ -12,17 +12,14 @@ public class ChestPlate extends JavaPlugin {
 	public CP_BlockListener bl = new CP_BlockListener(this);
 	@Override
 	public void onDisable() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void onEnable() {
-		// TODO Auto-generated method stub
 		getServer().getPluginManager().registerEvent(Type.ENTITY_INTERACT , el, Priority.Highest, this);
 		getServer().getPluginManager().registerEvent(Type.PLAYER_INTERACT , pl, Priority.Highest, this);
 		getServer().getPluginManager().registerEvent(Type.BLOCK_CANBUILD  , bl, Priority.Highest, this);
 		getServer().getPluginManager().registerEvent(Type.BLOCK_PHYSICS   , bl, Priority.Highest, this);
-		//getServer().getPluginManager().registerEvent(Type.REDSTONE_CHANGE , bl, Priority.Highest, this);
 	}
 	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
 		return false;
