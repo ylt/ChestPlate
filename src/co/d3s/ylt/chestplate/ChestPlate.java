@@ -25,18 +25,6 @@ public class ChestPlate extends JavaPlugin {
 		//getServer().getPluginManager().registerEvent(Type.REDSTONE_CHANGE , bl, Priority.Highest, this);
 	}
 	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
-		
-	    Thread t = Thread.currentThread();
-	    System.out.println("current thread: " + t);
-	    int active = Thread.activeCount();
-	    System.out.println("currently active threads: " + active);
-	    Thread all[] = new Thread[active];
-	    Thread.enumerate(all);
-	    for (int i = 0; i < active; i++) {
-	      System.out.println(i + ": " + all[i]);
-	    }
-	    //Thread.dumpStack();
-	    
-		return true;
+		return false;
 	}
 }

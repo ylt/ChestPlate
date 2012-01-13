@@ -1,7 +1,3 @@
 name: ChestPlate
-version: 1.0.1
+version: 1.0.2
 main: co.d3s.ylt.chestplate.ChestPlate
-#commands:
-#  threads:
-#    description: Lists threads
-#    usage: /<command>
