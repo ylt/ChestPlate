@@ -45,7 +45,7 @@ public class CP_Sorter extends CP_Object {
 			return CP_Return.pass;
 		}
 		
-		Block block = find((Block) plate);
+		Block block = find(plate);
 		if (block == null)
 			return CP_Return.pass;
 		
@@ -73,15 +73,18 @@ public class CP_Sorter extends CP_Object {
 		
 		String[] lines = sign.getLines();
 		for(String line : lines) {
-			boolean negate = false;
-			if (line.startsWith("-")) {
-				negate = true;
-				line = line.substring(1);
-			}
-			boolean match = cp.itemmatch.Type_Match(line.toUpperCase(), stack.getTypeId(), stack.getData().getData());
-			if (match) {
-				redirect = !negate;
-			}
+            for (String str : line.split(",") ) {
+                str = str.trim();
+                boolean negate = false;
+                if (str.startsWith("-")) {
+                    negate = true;
+                    str = str.substring(1);
+                }
+                boolean match = cp.itemmatch.Type_Match(str.toUpperCase(), stack.getTypeId(), stack.getData().getData());
+                if (match) {
+                    redirect = !negate;
+                }
+            }
 		}
 
 		if (redirect == true) {
