@@ -42,7 +42,7 @@ public class CP_Sorter extends CP_Object {
 		return false;
 	}
 
-    private Block findChest(Block sign) {
+    private Block findContainer(Block sign) {
 
         Material m = sign.getType();
         MaterialData md = m.getNewData(sign.getData());
@@ -55,9 +55,8 @@ public class CP_Sorter extends CP_Object {
         Block current = sign;
         current = current.getRelative(BlockFace.DOWN);
         current = current.getRelative(s.getFacing());
-        Material mat = current.getType();
 
-        if (mat == Material.CHEST || mat == Material.DISPENSER)
+        if (isContainer(current))
         {
             return current;
         }
@@ -112,9 +111,9 @@ public class CP_Sorter extends CP_Object {
             }
 		}
 
-        Block chest = findChest(block);
-        if (chest != null && redirect == true) {
-            return pickup(plate, chest, item);
+        Block container = findContainer(block);
+        if (container != null && redirect == true) {
+            return pickup(plate, container, item);
         }
 		if (redirect == true) {
 			angle = srad;

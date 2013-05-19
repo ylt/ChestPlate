@@ -48,6 +48,18 @@ public abstract class CP_Object {
 		cp.getServer().getScheduler().scheduleSyncDelayedTask(cp, new Plate_Depress(block.getLocation()), 5);
 	}
 
+	protected boolean isContainer(Block block) {
+		Material mat = block.getType();
+        switch (mat) {
+            case CHEST:
+            case DISPENSER:
+            case DROPPER:
+            case HOPPER:
+                return true;
+        }
+		return false;
+	}
+
     protected CP_Return pickup(Block plate, Block container, Item item) {
 		BlockState blockstate = container.getState();
 		if (!(blockstate instanceof InventoryHolder))

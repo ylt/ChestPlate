@@ -38,10 +38,7 @@ public class CP_Container extends CP_Object {
 	}
 	
 	public boolean check(Block block) {
-		Material mat = block.getType();
-		if (mat == Material.CHEST || mat == Material.DISPENSER)
-			return true;
-		return false;
+        return isContainer(block);
 	}
 	
     @Override
