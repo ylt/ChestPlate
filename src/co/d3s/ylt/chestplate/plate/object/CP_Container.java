@@ -44,50 +44,18 @@ public class CP_Container extends CP_Object {
 		return false;
 	}
 	
-	@Override
-	public CP_Return interact(Block plate, Entity entity) {
-		
-		if ((entity instanceof ExperienceOrb))
-			slidePickup(entity, 0.25);
-		if (!(entity instanceof Item))
-			return CP_Return.pass;
-		
-		Block block = find((Block) plate);
-		if (block == null)
-			return CP_Return.pass;
-			
-		BlockState blockstate = block.getState();
-		if (!(blockstate instanceof InventoryHolder))
-			return CP_Return.pass;
+    @Override
+    public CP_Return interact(Block plate, Entity entity) {
 
-		
-		
-		Item item = (Item)entity;
-		ItemStack stack = item.getItemStack();
-		Inventory inv = ((InventoryHolder)blockstate).getInventory();
-		
-		HashMap<Integer, ItemStack> ret = inv.addItem(stack);
-		if (ret.size() == 0) {
-			stack.setAmount(0);
-			item.remove();
-			//this.depressPlate(block);
-			//return CP_Return.done;
-		}
-		else {
-			int total = 0;
-			for (ItemStack s : ret.values()) {
-				total += s.getAmount();
-			}
-			stack.setAmount(total);
-			item.setItemStack(stack);
-			if (total == stack.getAmount()) {
-				slidePickup(item, 0.25);
-				return CP_Return.cancel;
-			}
-		}
-		depressPlate(plate);
-		
-		slidePickup(item, 0.25);
-		return CP_Return.done;
-	}
+        if ((entity instanceof ExperienceOrb))
+            slidePickup(entity, 0.25);
+        if (!(entity instanceof Item))
+            return CP_Return.pass;
+
+        Block container = find(plate);
+        if (container == null)
+            return CP_Return.pass;
+
+        return pickup(plate, container, (Item)entity);
+    }
 }
