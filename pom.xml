@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>co.d3s.ylt.chestplate</groupId>
+  <artifactId>ChestPlate</artifactId>
+  <version>1.0.2</version>
+  <name>ChestPlate</name>
+  <url>https://github.com/ylt/ChestPlate</url>
+  <repositories>
+      <repository>
+          <id>craftbukkit-repo</id>
+          <url>https://github.com/Bukkit/CraftBukkit</url>
+      </repository>
+  </repositories>
+  <dependencies>
+    <!-- You don't necessarily need to depend on Permissions if you don't want to, but this is how you add a dependency -->
+    <dependency>
+      <groupId>org.bukkit</groupId>
+      <artifactId>bukkit</artifactId>
+      <version>1.5.2-R0.2-SNAPSHOT</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.5</maven.compiler.source>
+    <maven.compiler.target>1.5</maven.compiler.target>
+  </properties>
+
+  <build>
+      <resources>
+          <resource>
+              <directory>src</directory>
+              <includes>
+                  <include>plugin.yml</include>
+              </includes>
+          </resource>
+      </resources>
+      <plugins>
+          <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>build-helper-maven-plugin</artifactId>
+              <version>1.5</version>
+
+              <executions>
+                  <execution>
+                      <id>add-sources</id>
+                      <phase>generate-sources</phase>
+                      <goals>
+                          <goal>add-source</goal>
+                      </goals>
+                      <configuration>
+                          <sources>
+                              <source>${basedir}/src</source>
+                          </sources>
+                      </configuration>
+                  </execution>
+              </executions>
+          </plugin>
+      </plugins>
+  </build>
+
+</project>
