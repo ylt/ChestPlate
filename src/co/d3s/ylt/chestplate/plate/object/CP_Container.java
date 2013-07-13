@@ -20,27 +20,27 @@ import co.d3s.ylt.chestplate.plate.CP_Event;
 import co.d3s.ylt.chestplate.plate.CP_Return;
 
 public class CP_Container extends CP_Object {
-	public CP_Container(ChestPlate cp) {
-		super(cp);
-	}
+    public CP_Container(ChestPlate cp) {
+        super(cp);
+    }
 
-	public Block find(Block block) {
-		Block current;
-		
-		current = block.getRelative(BlockFace.UP);
-		if (check(current))
-			return current;
-		
-		current = block.getRelative(BlockFace.DOWN);
-		if (check(current))
-			return current;
-		return null;
-	}
-	
-	public boolean check(Block block) {
+    public Block find(Block block) {
+        Block current;
+        
+        current = block.getRelative(BlockFace.UP);
+        if (check(current))
+            return current;
+        
+        current = block.getRelative(BlockFace.DOWN);
+        if (check(current))
+            return current;
+        return null;
+    }
+    
+    public boolean check(Block block) {
         return isContainer(block);
-	}
-	
+    }
+    
     @Override
     public CP_Return interact(Block plate, Entity entity) {
 
