@@ -102,7 +102,7 @@ public class ItemMatcher {
             
             if (dataName != "") {
                 dataid = Integer.parseInt(dataName);
-                if (id == pickupID && pickupID == dataid)
+                if (id == pickupID && dataid == pickupData)
                     return true;
                 else
                     return false;
